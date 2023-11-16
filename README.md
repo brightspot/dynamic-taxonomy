@@ -1,11 +1,5 @@
-> [!WARNING]
-> This README is a template for new Platform Extensions.
-> Notes in this format are instructions for you, the author, and must be deleted before the project is complete.
+# Dynamic Taxonomy
 
-# Example
-
-> [!WARNING]
-> This is a high-level summary of the functionality this extension provides.
 
 This extension provides the ability for Brightspot to print the words "Hello World" to the log when certain records are saved.
 
@@ -20,25 +14,25 @@ This extension provides the ability for Brightspot to print the words "Hello Wor
 
 ## Prerequisites
 
-> [!WARNING]
-> This section should list any prerequisites that must be met before the extension can be installed or used. 
-> If a specific version of Brightspot is needed, it should be listed here.
-> If any external APIs are used (AWS, GCP, or any other third party service), they should be listed here.
-
 This extension requires an instance of [Brightspot](https://www.brightspot.com/) and access to the project source code.
+
+The instance of Brightspot should have the following versions:
+- Brightspot: 4.5.15.8 or higher
+- Brightspot GO: 1.4.3 or higher
+- Java: 11 or higher
 
 ## Installation
 
 Gradle:
 ```groovy
-api 'com.brightspot:platform-extension-example:1.0.0'
+api 'com.brightspot:dynamic-taxonomy:1.0.0'
 ```
 
 Maven:
 ```xml
 <dependency>
     <groupId>com.brightspot</groupId>
-    <artifactId>platform-extension-example</artifactId>
+    <artifactId>dynamic-taxonomy</artifactId>
     <version>1.0.0</version>
 </dependency>
 ```
@@ -95,7 +89,7 @@ Then, add the following to your project's `build.gradle` file:
 
 ```groovy
 dependencies {
-    api 'com.brightspot:platform-extension-example:1.0.0-SNAPSHOT'
+    api 'com.brightspot:dynamic-taxonomy:1.0.0-SNAPSHOT'
 }
 ```
 
