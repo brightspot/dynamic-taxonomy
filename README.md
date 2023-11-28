@@ -18,7 +18,6 @@ This extension requires an instance of [Brightspot](https://www.brightspot.com/)
 
 The instance of Brightspot should have the following versions:
 - Brightspot: 4.5.15.8 or higher
-- Brightspot GO: 1.4.3 or higher
 - Java: 11 or higher
 
 ## Installation
@@ -50,6 +49,102 @@ public class MyContentType extends Content implements HasDynamicTags {
 ```
 
 This will enable a taxonomy tab on `MyContentType` record in the CMS where you can add dynamic tags to the record.
+
+_Optionally_ Dynamic tags can be customized with respective modification and substitution to support hierarchy as follows:
+
+Add a modification to the `DynamicTag` model to add a parent field:
+
+```java
+package brightspot.tag;
+
+import brightspot.taxonomy.DynamicTag;
+import com.psddev.dari.db.Modification;
+import com.psddev.dari.db.Recordable;
+import com.psddev.dari.db.StringException;
+import com.psddev.dari.util.ObjectUtils;
+
+@Recordable.FieldInternalNamePrefix(DynamicTagModification.FIELD_PREFIX)
+public class DynamicTagModification extends Modification<DynamicTag> {
+
+    public static final String FIELD_PREFIX = "dt.";
+
+    @Indexed
+    @Where("_id != ?") // exclude self to prevent cyclic references
+    private DynamicTag parent;
+
+    public DynamicTag getParent() {
+        return parent;
+    }
+
+    public void setParent(DynamicTag parent) {
+        this.parent = parent;
+    }
+
+    @Override
+    protected void onValidate() {
+        // validate that the category matches the parent category
+        if (!ObjectUtils.isBlank(getParent()) && (!ObjectUtils.equals(getParent().getCategory(), getOriginalObject().getCategory()))) {
+            getState().addError(
+                getState().getField("dt.parent"),
+                new StringException("Tag category must match parent category."));
+        }
+    }
+}
+```
+
+Then add a substitution to the `DynamicTag` model to facilitate hierarchy recalculations
+
+```java
+package brightspot.tag;
+
+import brightspot.taxon.TaxonParentExtension;
+import brightspot.taxonomy.DynamicTag;
+import com.psddev.cms.db.Taxon;
+import com.psddev.dari.db.Query;
+import com.psddev.dari.util.DariUtils;
+import com.psddev.dari.util.ObjectUtils;
+import com.psddev.dari.util.Substitution;
+
+public class DynamicTagSubstitution extends DynamicTag implements Substitution, Tag, TaxonParentExtension {
+
+    @Override
+    public String getTagDisplayNameRichText() {
+        return ObjectUtils.firstNonBlank(getDisplayName(), getName());
+    }
+
+    @Override
+    public String getTagDisplayNamePlainText() {
+        return ObjectUtils.firstNonBlank(getDisplayName(), getName());
+    }
+
+    @Override
+    public boolean isHiddenTag() {
+        // all tags are visible by default
+        return false;
+    }
+
+    @Override
+    public Tag getTagParent() {
+        return (Tag) as(DynamicTagModification.class).getParent();
+    }
+
+    @Override
+    public String getLinkableText() {
+        return DariUtils.toNormalized(getName());
+    }
+
+    @Override
+    public TaxonParentExtension getTaxonParent() {
+        return (TaxonParentExtension) as(DynamicTagModification.class).getParent();
+    }
+
+    @Override
+    public Query<? extends Taxon> getTaxonChildrenQuery() {
+        return Query.from(Taxon.class)
+            .where("brightspot.tag.DynamicTagModification/dt.parent = ?", this);
+    }
+}
+```
 
 ### Publish Dynamic tag categories
 
@@ -86,8 +181,7 @@ To publish dynamic tags:
 - Navigate to `Taxonomy` > `Tags`
 - Click `New Dynamic Tag` button in the bottom left corner.
 - Add the required display name.
-- Select a parent tag if applicable.
-- Select a category from the dropdown menu. (Note category must match the parent tag's category if parent tag is selected).
+- Select a category from the dropdown menu.
 - Click `Save`.
 
 ### Tagging content with dynamic tags
