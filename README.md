@@ -41,19 +41,63 @@ Substitute `1.0.0` for the desired version found on the [releases](/releases) li
 
 ## Usage
 
-> [!WARNING]
-> This section describes how a developer would use this extension in their project.
-> It should include code samples and/or screenshots and descriptions of any relevant configuration screens.
-
-To opt in to this behavior, implement the `SaysHelloWorld` interface on your content type:
+For models that need to support dynamic taxonomy, implement the `HasDynamicTags` interface on your content type:
 
 ```java
-public class MyContentType extends Content implements SaysHelloWorld {
+public class MyContentType extends Content implements HasDynamicTags {
     // ...
 }
 ```
 
-Now, when a `MyContentType` record is saved, the words "Hello World" will be printed to the log.
+This will enable a taxonomy tab on `MyContentType` record in the CMS where you can add dynamic tags to the record.
+
+### Publish Dynamic tag categories
+
+Dynamic tags are organized into categories. Each category has a name and a boolean flag to indicate whether this 
+category supports multiple tags.
+
+To publish dynamic tag categories:
+- Click the hamburger menu (☰) on top left corner of the CMS
+- Navigate to `Taxonomy` > `Categories`
+- Click `New Dynamic Tag Category` button in the bottom left corner.
+- Enter a name for the category and select whether this category supports multiple tags.
+- Click `Save`.
+
+### Publish Dynamic taxonomy mappings
+
+Dynamic taxonomy mappings are used to map dynamic tag categories to a specific content type that supports dynamic tags 
+i.e. models that implement the `HasDynamicTags` interface. 
+
+To publish dynamic taxonomy mappings:
+- Click the hamburger menu (☰) on top left corner of the CMS
+- Navigate to `Taxonomy` > `Content`.
+- Click `New Dynamic Taxonomy Mapping` button in the bottom left corner.
+- Select a supported content type from the dropdown menu.
+- Add a list of dynamic tag categories that you want to map to the selected content type.
+- Enter the optional `Display Name`.
+- Click `Save`.
+
+### Publish Dynamic tags
+
+Dynamic tags are actual taxon records that can be used to tag content. Dynamic tags are organized into categories.
+
+To publish dynamic tags:
+- Click the hamburger menu (☰) on top left corner of the CMS
+- Navigate to `Taxonomy` > `Tags`
+- Click `New Dynamic Tag` button in the bottom left corner.
+- Add the required display name.
+- Select a parent tag if applicable.
+- Select a category from the dropdown menu. (Note category must match the parent tag's category if parent tag is selected).
+- Click `Save`.
+
+### Tagging content with dynamic tags
+
+To tag content with dynamic tags:
+- Navigate to the contents edit form.
+- Click the `Taxonomy` tab.
+- The taxonomy tab will display a list of dynamic tag categories that are mapped to the content type.
+- Add tags as needed.
+- Publish or save content as usual.
 
 ## Documentation
 
