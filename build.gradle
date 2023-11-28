@@ -16,10 +16,6 @@ dependencies {
     api 'com.psddev:dari-db'
     api 'com.psddev:dari-util'
 
-    // Go
-    api 'com.brightspot.go:lib-model-tag'
-    api 'com.brightspot.go:lib-model-taxon-parent-extension'
-
     // Third-party
     api 'org.slf4j:slf4j-api'
 }
