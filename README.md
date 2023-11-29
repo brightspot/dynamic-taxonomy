@@ -1,7 +1,8 @@
 # Dynamic Taxonomy
 
 
-This extension provides the ability for Brightspot to print the words "Hello World" to the log when certain records are saved.
+This extension provides the ability to editorially curate tags and tag categories for content types. 
+Tag categories can then be mapped to content types to enable tagging of content with tags from the mapped categories.
 
 * [Prerequisites](#prerequisites)
 * [Installation](#installation)
