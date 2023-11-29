@@ -196,7 +196,7 @@ To tag content with dynamic tags:
 
 ## Documentation
 
-The latest Javadocs can be found [here](https://artifactory.psdops.com/public/com/brightspot/platform-extension-example/%5BRELEASE%5D/platform-extension-example-%5BRELEASE%5D-javadoc.jar!/index.html).
+The latest Javadocs can be found [here](https://artifactory.psdops.com/public/com/brightspot/dynamic-taxonomy/%5BRELEASE%5D/dynamic-taxonomy-%5BRELEASE%5D-javadoc.jar!/index.html).
 
 ## Versioning
 
