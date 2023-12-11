@@ -35,7 +35,7 @@ public class HasDynamicTagsData extends Modification<HasDynamicTags> {
     @Indexed
     @ToolUi.Hidden
     @ToolUi.Filterable(displayByDefault = true)
-    @DisplayName("Tags")
+    @DisplayName("Dynamic Tags")
     public Set<DynamicTag> getTags() {
         return Optional.ofNullable(getOriginalObject())
             .map(HasDynamicTags::getDynamicTags).orElse(Collections.emptySet());
