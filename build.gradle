@@ -8,11 +8,14 @@ java {
     withSourcesJar()
 }
 
-description = 'Example'
+description = 'Dynamic Taxonomy'
 
 dependencies {
+    // Brightspot
     api 'com.psddev:cms-db'
     api 'com.psddev:dari-db'
     api 'com.psddev:dari-util'
+
+    // Third-party
     api 'org.slf4j:slf4j-api'
 }
