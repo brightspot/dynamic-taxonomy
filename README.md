@@ -1,8 +1,7 @@
 # Dynamic Taxonomy
 
 
-This extension provides the ability to editorially curate tags and tag categories for content types. 
-Tag categories can then be mapped to content types to enable tagging of content with tags from the mapped categories.
+This extension provides the ability to editorially curate tags and tag categories for content types. Tag categories can then be mapped to content types to enable tagging of content with tags from the mapped categories.
 
 * [Prerequisites](#prerequisites)
 * [Installation](#installation)
@@ -49,11 +48,11 @@ public class MyContentType extends Content implements HasDynamicTags {
 }
 ```
 
-This will enable a taxonomy tab on `MyContentType` record in the CMS where you can add dynamic tags to the record.
+This interface enables a taxonomy tab on the `MyContentType` record in the CMS where editors can add dynamic tags to the record.
 
 _Optionally_ Dynamic tags can be customized with respective modification and substitution to support hierarchy as follows:
 
-Add a modification to the `DynamicTag` model to add a parent field:
+Step 1: Add a modification to the `DynamicTag` model to add a parent field:
 
 ```java
 package brightspot.tag;
@@ -93,7 +92,7 @@ public class DynamicTagModification extends Modification<DynamicTag> {
 }
 ```
 
-Then add a substitution to the `DynamicTag` model to facilitate hierarchy recalculations
+Step 2: Add a substitution to the `DynamicTag` model to facilitate hierarchy recalculations
 
 ```java
 package brightspot.tag;
@@ -146,57 +145,11 @@ public class DynamicTagSubstitution extends DynamicTag implements Substitution, 
     }
 }
 ```
-
-### Publish Dynamic tag categories
-
-Dynamic tags are organized into categories. Each category has a name and a boolean flag to indicate whether this 
-category supports multiple tags.
-
-To publish dynamic tag categories:
-- Click the hamburger menu (☰) on top left corner of the CMS
-- Navigate to `Taxonomy` > `Categories`
-- Click `New Dynamic Tag Category` button in the bottom left corner.
-- Enter a name for the category and select whether this category supports multiple tags.
-- Click `Save`.
-
-### Publish Dynamic taxonomy mappings
-
-Dynamic taxonomy mappings are used to map dynamic tag categories to a specific content type that supports dynamic tags 
-i.e. models that implement the `HasDynamicTags` interface. 
-
-To publish dynamic taxonomy mappings:
-- Click the hamburger menu (☰) on top left corner of the CMS
-- Navigate to `Taxonomy` > `Content`.
-- Click `New Dynamic Taxonomy Mapping` button in the bottom left corner.
-- Select a supported content type from the dropdown menu.
-- Add a list of dynamic tag categories that you want to map to the selected content type.
-- Enter the optional `Display Name`.
-- Click `Save`.
-
-### Publish Dynamic tags
-
-Dynamic tags are actual taxon records that can be used to tag content. Dynamic tags are organized into categories.
-
-To publish dynamic tags:
-- Click the hamburger menu (☰) on top left corner of the CMS
-- Navigate to `Taxonomy` > `Tags`
-- Click `New Dynamic Tag` button in the bottom left corner.
-- Add the required display name.
-- Select a category from the dropdown menu.
-- Click `Save`.
-
-### Tagging content with dynamic tags
-
-To tag content with dynamic tags:
-- Navigate to the contents edit form.
-- Click the `Taxonomy` tab.
-- The taxonomy tab will display a list of dynamic tag categories that are mapped to the content type.
-- Add tags as needed.
-- Publish or save content as usual.
-
 ## Documentation
 
 The latest Javadocs can be found [here](https://artifactory.psdops.com/public/com/brightspot/dynamic-taxonomy/%5BRELEASE%5D/dynamic-taxonomy-%5BRELEASE%5D-javadoc.jar!/index.html).
+
+The user guide for this extension is available at [Dynamic Taxonomy](https://www.brightspot.com/documentation/brightspot-cms-user-guide/dynamic-taxonomy).
 
 ## Versioning
 
