@@ -147,9 +147,9 @@ public class DynamicTagSubstitution extends DynamicTag implements Substitution, 
 ```
 ## Documentation
 
-[Video Demo] <**Add link**>
-[User Guide](https://www.brightspot.com/documentation/brightspot-cms-user-guide/dynamic-taxonomy).
-[Javadocs](https://artifactory.psdops.com/public/com/brightspot/dynamic-taxonomy/%5BRELEASE%5D/dynamic-taxonomy-%5BRELEASE%5D-javadoc.jar!/index.html).
+[Video Demo] <**Add link**>. 
+[User Guide](https://www.brightspot.com/documentation/brightspot-cms-user-guide/dynamic-taxonomy). 
+[Javadocs](https://artifactory.psdops.com/public/com/brightspot/dynamic-taxonomy/%5BRELEASE%5D/dynamic-taxonomy-%5BRELEASE%5D-javadoc.jar!/index.html). 
 
 ## Versioning
 
