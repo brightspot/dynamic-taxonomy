@@ -147,13 +147,13 @@ public class DynamicTagSubstitution extends DynamicTag implements Substitution, 
 ```
 ## Documentation
 
-- [Video Demo] <**Add link**> 
+- [Video Demo](https://www.brightspot.com/documentation/brightspot-cms-user-guide/dynamic-taxonomy-demo) 
 - [User Guide](https://www.brightspot.com/documentation/brightspot-cms-user-guide/dynamic-taxonomy)
 - [Javadocs](https://artifactory.psdops.com/public/com/brightspot/dynamic-taxonomy/%5BRELEASE%5D/dynamic-taxonomy-%5BRELEASE%5D-javadoc.jar!/index.html) 
 
 ## Versioning
 
-The version numbers for this extension will strictly follow [Semantic Versioning](https://semver.org/). The latest release can be found [here](https://github.com/brightspot/dynamic-taxonomy/tags)
+The version numbers for this extension will strictly follow [Semantic Versioning](https://semver.org/). The latest release can be found [here](https://github.com/brightspot/dynamic-taxonomy/tags).
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to
