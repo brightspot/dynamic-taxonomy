@@ -153,7 +153,7 @@ public class DynamicTagSubstitution extends DynamicTag implements Substitution, 
 
 ## Versioning
 
-The version numbers for this extension will strictly follow [Semantic Versioning](https://semver.org/). The latest release can be found here <ADD IN LINK>.
+The version numbers for this extension will strictly follow [Semantic Versioning](https://semver.org/). The latest release can be found [here](https://github.com/brightspot/dynamic-taxonomy/tags)
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to
