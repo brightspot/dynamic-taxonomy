@@ -36,7 +36,7 @@ Maven:
 </dependency>
 ```
 
-Substitute `1.0.0` for the desired version found on the [releases](/releases) list.
+Substitute `1.0.0` for the desired version found on the [releases](https://github.com/brightspot/dynamic-taxonomy/releases) list.
 
 ## Usage
 
@@ -153,7 +153,7 @@ public class DynamicTagSubstitution extends DynamicTag implements Substitution, 
 
 ## Versioning
 
-The version numbers for this extension will strictly follow [Semantic Versioning](https://semver.org/). The latest release can be found [here](https://github.com/brightspot/dynamic-taxonomy/tags).
+The version numbers for this extension will strictly follow [Semantic Versioning](https://semver.org/). The latest release can be found [here](https://github.com/brightspot/dynamic-taxonomy/releases).
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to
